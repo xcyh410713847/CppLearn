@@ -3,3 +3,6 @@ cmake_minimum_required(VERSION 3.1)
 
 # 项目名称
 project(CppLearn)
+
+# 增加子目录
+add_subdirectory(Template)
