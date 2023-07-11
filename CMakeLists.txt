@@ -7,5 +7,8 @@ project(CppLearn)
 # 增加GTest子目录
 add_subdirectory(googletest-1.13.0)
 
-# 增加子目录
+# 增加工程目录
 add_subdirectory(Template)
+
+# 增加测试目录
+add_subdirectory(tests)
