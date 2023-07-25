@@ -12,9 +12,10 @@ add_subdirectory(Template)
 
 # 增加测试目录
 # add_subdirectory(tests)
-
 add_subdirectory(Set)
 
 add_subdirectory(Array)
 
 add_subdirectory(ChatGPT)
+
+add_subdirectory(Point)
