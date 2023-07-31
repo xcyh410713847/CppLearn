@@ -1,5 +1,7 @@
 # CMake 最低版本号要求
-cmake_minimum_required(VERSION 3.1)
+cmake_minimum_required(VERSION 3.15)
+
+set(CMAKE_SKIP_ALL_BUILD NO)
 
 # 项目名称
 project(CppLearn)
@@ -19,3 +21,5 @@ add_subdirectory(Array)
 add_subdirectory(ChatGPT)
 
 add_subdirectory(Point)
+
+add_subdirectory(Map)
