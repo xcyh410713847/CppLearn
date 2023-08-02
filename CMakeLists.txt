@@ -23,3 +23,5 @@ add_subdirectory(ChatGPT)
 add_subdirectory(Point)
 
 add_subdirectory(Map)
+
+add_subdirectory(Library)
