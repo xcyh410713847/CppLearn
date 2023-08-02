@@ -7,8 +7,6 @@
 
 #include "Static\ITestStaticLib.h"
 
-extern "C" ITestStaticLib *CreateTestStaticLib();
-
 int main(int argc, char *argv[])
 {
     ITestStaticLib *pTestStaticLib = CreateTestStaticLib();
