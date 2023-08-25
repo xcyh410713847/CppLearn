@@ -25,3 +25,5 @@ add_subdirectory(Point)
 add_subdirectory(Map)
 
 add_subdirectory(Library)
+
+add_subdirectory(Socket)
