@@ -20,7 +20,14 @@ public:
     void Test();
 };
 
-ITestStaticLib *CreateTestStaticLib()
+bool CreateTestStaticLib()
 {
-    return new TestStaticLib();
+    g_pTestStaticLib = new TestStaticLib();
+
+    return true;
+}
+
+ITestStaticLib *GetTestStaticLib()
+{
+    return g_pTestStaticLib;
 }

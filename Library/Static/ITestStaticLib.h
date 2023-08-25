@@ -12,4 +12,7 @@ struct ITestStaticLib
     virtual void Test() = 0;
 };
 
-extern "C" ITestStaticLib *CreateTestStaticLib();
+static ITestStaticLib *g_pTestStaticLib = nullptr;
+
+extern "C" bool CreateTestStaticLib();
+extern "C" ITestStaticLib *GetTestStaticLib();

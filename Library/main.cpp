@@ -9,8 +9,9 @@
 
 int main(int argc, char *argv[])
 {
-    ITestStaticLib *pTestStaticLib = CreateTestStaticLib();
-    pTestStaticLib->Test();
+    CreateTestStaticLib();
+
+    GetTestStaticLib()->Test();
 
     return 0;
 }
