@@ -27,3 +27,11 @@ add_subdirectory(Map)
 add_subdirectory(Library)
 
 add_subdirectory(Socket)
+
+add_subdirectory(Vector)
+
+add_subdirectory(MoveConstructor)
+
+add_subdirectory(MoveAssignmentOperator)
+
+add_subdirectory(CopyConstructor)
