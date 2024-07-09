@@ -13,13 +13,9 @@ add_subdirectory(Array)
 
 add_subdirectory(Class)
 
-add_subdirectory(CopyConstructor)
-
 add_subdirectory(Library)
 
 add_subdirectory(MoveAssignmentOperator)
-
-add_subdirectory(MoveConstructor)
 
 add_subdirectory(Pointer)
 
