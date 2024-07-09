@@ -5,8 +5,6 @@
 **功能: 动态数组
 *************************************************************************/
 
-#include <iostream>
-
 #include "push_back_emplace_back.h"
 
 int main()

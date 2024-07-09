@@ -12,13 +12,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
 # 增加GTest子目录
-# add_subdirectory(googletest-1.13.0)
+add_subdirectory(googletest-1.13.0)
 
 # 增加工程目录
 add_subdirectory(Template)
 
 # 增加测试目录
-# add_subdirectory(tests)
+add_subdirectory(tests)
+
 add_subdirectory(Set)
 
 add_subdirectory(Array)
