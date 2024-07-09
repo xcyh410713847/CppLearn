@@ -1,10 +1,15 @@
 # CMake 最低版本号要求
-cmake_minimum_required(VERSION 3.15)
+cmake_minimum_required(VERSION 3.26)
 
 set(CMAKE_SKIP_ALL_BUILD NO)
 
 # 项目名称
 project(CppLearn)
+
+# 设置 C++ 标准为 C++20
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 # 增加GTest子目录
 # add_subdirectory(googletest-1.13.0)

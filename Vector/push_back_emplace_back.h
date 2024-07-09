@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <vector>
+#include <random>
+#include <windows.h>
 
 class TestA
 {
@@ -33,4 +35,30 @@ void test_emplace_back()
     TestA a;
     vec.emplace_back(a);
     std::cout << "----------------------" << std::endl;
+}
+
+// 从vector中随机出指定个数的元素
+void test_random()
+{
+    std::cout << "test_random ----------------------" << std::endl;
+    // 获取当前tick
+    auto start = GetTickCount64();
+
+    std::vector<int> vec;
+    for (int i = 0; i < 999999; ++i)
+    {
+        vec.push_back(i);
+    }
+
+    std::random_device rd;
+    std::mt19937 gen(rd());
+    std::shuffle(vec.begin(), vec.end(), gen);
+
+    for (int i = 0; i < 50; ++i)
+    {
+        std::cout << vec[i] << std::endl;
+    }
+
+    auto end = GetTickCount64();
+    std::cout << "time: " << end - start << std::endl;
 }

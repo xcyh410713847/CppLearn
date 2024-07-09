@@ -13,7 +13,10 @@ int main()
 {
     system("chcp 65001");
 
-    test_push_back();
-    test_emplace_back();
+    // test_push_back();
+    // test_emplace_back();
+
+    test_random();
+
     return 0;
 }
