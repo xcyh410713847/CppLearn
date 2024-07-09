@@ -9,14 +9,13 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-# 增加工程目录
 add_subdirectory(Template)
 
 add_subdirectory(Array)
 
-add_subdirectory(Point)
-
 add_subdirectory(Library)
+
+add_subdirectory(Pointer)
 
 add_subdirectory(Socket)
 
@@ -27,5 +26,3 @@ add_subdirectory(MoveConstructor)
 add_subdirectory(MoveAssignmentOperator)
 
 add_subdirectory(CopyConstructor)
-
-add_subdirectory(GoogleTest)
