@@ -7,48 +7,37 @@
 
 #include <iostream>
 #include <map>
-#include <vector>
 
-struct Data1
+/*
+    std::map是C++标准库中常用的一种关联容器，它使用红黑树（Red-Black Tree）实现，能够在对数时间内完成插入、删除、查找等操作
+*/
+
+/**
+ * 增加元素
+ */
+void Test_Add()
 {
-    int a;
-    std::vector<int> vecInt;
-};
+    std::map<int, int> mapAdd;
 
-struct Data2
-{
-    std::vector<Data1> vecData1;
+    // 通过 insert 方法增加元素
+    mapAdd.insert(std::pair<int, int>(1, 10));
 
-    Data2()
+    // 通过 [] 运算符增加元素
+    mapAdd[2] = 20;
+
+    // 引用方式增加元素
+    auto &it = mapAdd[3];
+    it = 30;
+
+    for (auto &it : mapAdd)
     {
-        memset(this, 0, sizeof(Data2));
+        std::cout << it.first << " " << it.second << std::endl;
     }
-};
-
-typedef std::map<int, Data2> MapData2;
+}
 
 int main()
 {
-    MapData2 mapData2;
-    for (int i = 0; i < 10; ++i)
-    {
-        Data2 &data2 = mapData2[i];
-        for (int j = 0; j < 10; ++j)
-        {
-            Data1 data1;
-            data1.a = j;
-            data2.vecData1.push_back(data1);
-        }
-    }
-
-    for (auto it = mapData2.begin(); it != mapData2.end(); ++it)
-    {
-        std::cout << it->first << std::endl;
-        for (auto it2 = it->second.vecData1.begin(); it2 != it->second.vecData1.end(); ++it2)
-        {
-            std::cout << it2->a << std::endl;
-        }
-    }
+    Test_Add();
 
     return 0;
 }

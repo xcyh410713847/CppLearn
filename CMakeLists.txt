@@ -11,6 +11,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 add_subdirectory(Array)
 
+add_subdirectory(BinaryTree)
+
 add_subdirectory(Class)
 
 add_subdirectory(Library)
