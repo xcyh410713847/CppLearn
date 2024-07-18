@@ -7,6 +7,8 @@
 
 #pragma once
 
+#include <iostream>
+
 /**
  * 二叉树节点结构体
  */
@@ -35,6 +37,25 @@ public:
     int GetHeight(TreeNode *node);        // 获取树的高度
     int GetSize(TreeNode *node);          // 获取树的节点数
     TreeNode *GetRoot();                  // 获取根节点
+
+    // 获取树的高度
+    int calculateHeight(TreeNode *root)
+    {
+        if (root == nullptr)
+        {
+            return 0;
+        }
+
+        int leftHeight = calculateHeight(root->Left);
+        int rightHeight = calculateHeight(root->Right);
+
+        return std::max(leftHeight, rightHeight) + 1;
+    }
+
+    /**
+     * 打印树
+    */
+    void PrintTree(TreeNode *node, int level);
 private:
     TreeNode *Root; // 根节点
 };

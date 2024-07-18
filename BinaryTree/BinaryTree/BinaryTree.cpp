@@ -7,7 +7,7 @@
 
 #include "BinaryTree.h"
 
-#include <iostream>
+#include <iomanip>
 #include <queue>
 
 BinaryTree::BinaryTree() { Root = nullptr; }
@@ -16,36 +16,49 @@ BinaryTree::~BinaryTree() {}
 
 void BinaryTree::Insert(const int &InValue)
 {
+    /*
+        说明：插入节点的思路
+        1. 如果根节点为空，则直接将新节点作为根节点
+        2. 如果新节点的值小于当前节点的值，则继续遍历左子树
+        3. 如果新节点的值大于等于当前节点的值，则继续遍历右子树
+        4. 直到找到一个空节点，将新节点插入到该空节点
+    */
     TreeNode *node = new TreeNode;
     node->Value = InValue;
     node->Left = nullptr;
     node->Right = nullptr;
 
+    // 如果根节点为空，则直接将新节点作为根节点
     if (Root == nullptr)
     {
         Root = node;
         return;
     }
 
+    // 遍历二叉树，找到新节点的插入位置
     TreeNode *current = Root;
     TreeNode *parent = nullptr;
     while (current != nullptr)
     {
         parent = current;
+        // 如果新节点的值小于当前节点的值，则继续遍历左子树
         if (InValue < current->Value)
         {
             current = current->Left;
         }
+        // 如果新节点的值大于等于当前节点的值，则继续遍历右子树
         else
         {
             current = current->Right;
         }
     }
 
+    // 如果新节点的值小于父节点的值，则将新节点插入到父节点的左子树
     if (InValue < parent->Value)
     {
         parent->Left = node;
     }
+    // 如果新节点的值大于等于父节点的值，则将新节点插入到父节点的右子树
     else
     {
         parent->Right = node;
@@ -238,4 +251,67 @@ int BinaryTree::GetSize(TreeNode *node)
 TreeNode *BinaryTree::GetRoot()
 {
     return Root;
+}
+
+void BinaryTree::PrintTree(TreeNode *node, int level)
+{
+    if (Root == nullptr)
+    {
+        return;
+    }
+
+    // 计算树的高度
+    int height = calculateHeight(Root);
+    int maxWidth = std::pow(2, height) - 1; // 最底层的宽度
+
+    // 使用队列实现层次遍历
+    std::queue<TreeNode *> q;
+    q.push(Root);
+
+    for (int level = 0; level < height; ++level)
+    {
+        int levelSize = q.size();
+        int spaces = (maxWidth - (std::pow(2, level) - 1)) / (std::pow(2, level + 1));
+
+        for (int i = 0; i < levelSize; ++i)
+        {
+            TreeNode *node = q.front();
+            q.pop();
+
+            if (i == 0)
+            {
+                std::cout << std::setw(spaces) << "";
+            }
+            else
+            {
+                std::cout << std::setw(spaces * 2 + 1) << "";
+            }
+
+            if (i % 2 == 0)
+            {
+                std::cout << "[";
+            }
+
+            if (node != nullptr)
+            {
+                std::cout << node->Value;
+                q.push(node->Left);
+                q.push(node->Right);
+            }
+            else
+            {
+                std::cout << std::setw(3) << "*";
+                q.push(nullptr);
+                q.push(nullptr);
+            }
+
+            if (i % 2 != 0)
+            {
+                std::cout << "]";
+            }
+
+            std::cout << std::setw(spaces * 2 + 1) << "";
+        }
+        std::cout << '\n';
+    }
 }
