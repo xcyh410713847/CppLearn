@@ -8,37 +8,324 @@
 #include <iostream>
 #include <map>
 
-/*
-    std::map是C++标准库中常用的一种关联容器
-    使用红黑树（Red-Black Tree）实现，能够在对数时间内完成插入、删除、查找等操作
-*/
-
-/**
- * 增加元素
- */
-void Test_Add()
+namespace CppLearn::STL::Container::Map
 {
-    std::map<int, int> mapAdd;
+    /*
+        std::map 是一种基于红黑树（Red-Black Tree）实现的有序关联容器
+        有序关联容器（如 std::map）通常在缓存性能方面不如无序容器（如 std::unordered_map）。
+        这是因为在 std::map 中，元素根据键的顺序进行存储，可能导致数据在内存中分散，
+        而 std::unordered_map 使用哈希表，通过哈希函数将键值对分布在固定大小的桶中，有时可以提供更好的缓存命中率
 
-    // 通过 insert 方法增加元素
-    mapAdd.insert(std::pair<int, int>(1, 10));
+        操作	                时间复杂度      空间复杂度
+        插入（Insertion）	    O(log n)	    O(1)
+        查找（Lookup）	        O(log n)        O(1)
+        删除（Deletion）	    O(log n)	    O(1)
+        迭代（Iteration）	    O(n)	        O(1)
+        大小（Size）	        O(1)	        O(1)
+    */
 
-    // 通过 [] 运算符增加元素
-    mapAdd[2] = 20;
-
-    // 引用方式增加元素
-    auto &it = mapAdd[3];
-    it = 30;
-
-    for (auto &it : mapAdd)
+    /**
+     * 插入 Insertion
+     * 时间复杂度：O(logN)
+     *      插入操作需要首先找到正确的位置，然后进行插入，由于红黑树的高度为 O(log n)，因此插入操作的时间复杂度为 O(log n)
+     * 空间复杂度：O(1)
+     *      插入操作会导致树的节点增加一个固定的大小
+     */
+    void Test_Insertion()
     {
-        std::cout << it.first << " " << it.second << std::endl;
+        std::map<int, std::string> map;
+
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用下标插入元素
+        map[1] = "one";
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 insert() 方法插入元素(初始化列表)
+        map.insert({2, "two"});
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 insert() 方法插入元素
+        map.insert(std::make_pair(3, "three"));
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 insert() 方法插入元素
+        map.insert(std::pair<int, std::string>(4, "four"));
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 emplace() 方法插入元素 C++11
+        map.emplace(5, "five");
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 emplace() 方法插入元素 C++11
+        map.emplace(std::make_pair(6, "six"));
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 emplace() 方法插入元素 C++11
+        map.emplace(std::pair<int, std::string>(7, "seven"));
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        std::map<int, std::string> map2 = {{8, "eight"}, {9, "nine"}, {10, "ten"}};
+
+        // 使用 insert() 方法插入元素(范围)
+        map.insert(map2.begin(), map2.end());
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 赋值插入 C++17
+        map.insert_or_assign(11, "eleven");
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 insert(std::make_pair()) 方法插入元素，如果已存在则不插入
+        std::cout << "map[1]: " << map.at(1) << std::endl;
+        map.insert(std::make_pair(1, "1"));
+        std::cout << "map[1]: " << map.at(1) << std::endl;
+        map[1] = "1";
+        std::cout << "map[1]: " << map.at(1) << std::endl;
+        std::cout << std::endl;
+    }
+
+    /**
+     * 查找 Lookup
+     * 时间复杂度：O(logN)
+     *     查找操作通过比较键值沿树进行，红黑树的高度为 O(log n)，因此查找的时间复杂度为 O(log n)
+     * 空间复杂度：O(1)
+     *    查找操作并不增加或减少 map 的内存使用
+     */
+    void Test_Lookup()
+    {
+        std::map<int, int> map = {{1, 1}, {2, 2}, {3, 3}};
+
+        // 使用下标访问元素
+        std::cout << "map[1]: " << map[1] << std::endl;
+        std::cout << "map[3]: " << map[3] << std::endl;
+        std::cout << std::endl;
+
+        // 使用 at() 方法访问元素
+        std::cout << "map.at(1): " << map.at(1) << std::endl;
+        std::cout << "map.at(3): " << map.at(3) << std::endl;
+        std::cout << std::endl;
+
+        // 使用迭代器访问元素
+        std::cout << "map.find(1): " << map.find(1)->second << std::endl;
+        std::cout << "map.find(3): " << map.find(3)->second << std::endl;
+        std::cout << std::endl;
+
+        // 访问不存在的元素
+        std::cout << "map[4]: " << map[4] << std::endl; // 会插入一个默认值
+        // std::cout << "map.at(5): " << map.at(5) << std::endl; // 会抛出异常
+        // std::cout << "map.find(5): " << map.find(5)->second << std::endl; // 会抛出异常
+        std::cout << std::endl;
+
+        // 访问第一个不小于给定键的元素
+        std::cout << "map.lower_bound(2): " << map.lower_bound(2)->second << std::endl;
+        std::cout << "map.lower_bound(3): " << map.lower_bound(3)->second << std::endl;
+        std::cout << std::endl;
+
+        // 访问第一个大于给定键的元素
+        std::cout << "map.upper_bound(2): " << map.upper_bound(2)->second << std::endl;
+        std::cout << "map.upper_bound(3): " << map.upper_bound(3)->second << std::endl;
+        std::cout << std::endl;
+
+        // 访问给定键范围内的元素
+        auto range = map.equal_range(2);
+        std::cout << "map.equal_range(2): " << range.first->second << ", " << range.second->second << std::endl;
+        range = map.equal_range(3);
+        std::cout << "map.equal_range(3): " << range.first->second << ", " << range.second->second << std::endl;
+        std::cout << std::endl;
+    }
+
+    /**
+     * 删除 Deletion
+     * 时间复杂度：O(logN)
+     *     删除操作需要首先找到要删除的节点，然后重新平衡红黑树，其时间复杂度为 O(log n)
+     * 空间复杂度：O(1)
+     *     删除操作会导致树的节点减少一个固定的大小
+     */
+    void Test_Deletion()
+    {
+        std::map<int, int> map = {{1, 1}, {2, 2}, {3, 3}};
+
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 通过键删除元素
+        map.erase(1);
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 删除迭代器指向的元素
+        map.erase(map.find(2));
+        std::cout << "map.size(): " << map.size() << std::endl;
+
+        // 删除所有元素
+        map.clear();
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 删除指定范围的元素
+        std::map<int, int> map2 = {{1, 1}, {2, 2}, {3, 3}};
+        map2.erase(map2.begin(), map2.end());
+        std::cout << "map2.size(): " << map2.size() << std::endl;
+        std::cout << std::endl;
+    }
+
+    /**
+     * 迭代 Iteration
+     * 时间复杂度：O(N)
+     *     遍历整个 map，时间复杂度为 O(n)
+     * 空间复杂度：O(1)
+     *     迭代操作不增加 map 的内存使用
+     */
+    void Test_Iteration()
+    {
+        std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
+
+        // begin
+        std::cout << "map.begin() first: " << map.begin()->first << ", second: " << map.begin()->second << std::endl;
+        std::cout << std::endl;
+
+        // end
+        // std::cout << "map.end() first: " << map.end()->first << ", second: " << map.end()->second << std::endl; // 会抛出异常
+
+        // rBegin
+        std::cout << "map.rbegin() first: " << map.rbegin()->first << ", second: " << map.rbegin()->second << std::endl;
+        std::cout << std::endl;
+
+        // rEnd
+        // std::cout << "map.rend() first: " << map.rend()->first << ", second: " << map.rend()->second << std::endl; // 会抛出异常
+    }
+
+    /**
+     * 大小 Size
+     * 时间复杂度：O(1)
+     *     map 会维护一个大小变量，因此获取 map 的大小的时间复杂度为 O(1)
+     * 空间复杂度：O(1)
+     *     获取 map 的大小并不会增加 map 的内存使用
+     */
+    void Test_Size()
+    {
+        std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
+
+        // empty
+        std::cout << "map.empty(): " << (map.empty() ? "true" : "false") << std::endl;
+        std::cout << std::endl;
+
+        // size
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // max_size
+        std::cout << "map.max_size(): " << map.max_size() << std::endl;
+        std::cout << std::endl;
+    }
+
+    /**
+     * 创建
+     */
+    void Test_Create()
+    {
+        // 创建一个空 map
+        std::map<int, std::string> map1;
+        std::cout << "map1 size: " << map1.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用初始化列表创建 map C++11
+        std::map<int, std::string> map2 = {{1, "one"}, {2, "two"}, {3, "three"}};
+        std::cout << "map2 size: " << map2.size() << std::endl;
+        std::cout << std::endl;
+
+        // 复制 map
+        std::map<int, std::string> map3(map2);
+        std::cout << "map3 size: " << map3.size() << std::endl;
+        std::cout << "map2 size: " << map2.size() << std::endl;
+        std::cout << std::endl;
+
+        // 移动构造函数 map C++11
+        std::map<int, std::string> map4(std::move(map3));
+        std::cout << "map4 size: " << map4.size() << std::endl;
+        std::cout << "map3 size: " << map3.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用迭代器创建 map
+        std::map<int, std::string> map5(map2.begin(), map2.end());
+        std::cout << "map5 size: " << map5.size() << std::endl;
+        std::cout << std::endl;
+
+        // 交换 map
+        map1.swap(map2);
+        std::cout << "map1 size: " << map1.size() << std::endl;
+        std::cout << "map2 size: " << map2.size() << std::endl;
+        std::cout << std::endl;
+    }
+
+    /**
+     * 赋值操作
+     */
+    void Test_Assignment()
+    {
+        std::map<int, std::string> map1 = {{1, "one"}, {2, "two"}, {3, "three"}};
+        std::map<int, std::string> map2;
+
+        // 使用赋值操作符
+        map2 = map1;
+        std::cout << "map2 size: " << map2.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用移动赋值操作符 C++11
+        std::map<int, std::string> map3;
+        map3 = std::move(map2);
+        std::cout << "map3 size: " << map3.size() << std::endl;
+        std::cout << "map2 size: " << map2.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用初始化列表赋值 C++11
+        std::map<int, std::string> map4;
+        map4 = {{1, "one"}, {2, "two"}, {3, "three"}};
+        std::cout << "map4 size: " << map4.size() << std::endl;
+        std::cout << std::endl;
+    }
+
+    /**
+     * 数量
+     */
+    void Test_Count()
+    {
+        std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
+
+        // count
+        std::cout << "map.count(1): " << map.count(1) << std::endl;
+        std::cout << "map.count(4): " << map.count(4) << std::endl;
+        std::cout << std::endl;
     }
 }
 
 int main()
 {
-    Test_Add();
+    CppLearn::STL::Container::Map::Test_Insertion();
+
+    // CppLearn::STL::Container::Map::Test_Lookup();
+
+    // CppLearn::STL::Container::Map::Test_Deletion();
+
+    // CppLearn::STL::Container::Map::Test_Iteration();
+
+    // CppLearn::STL::Container::Map::Test_Size();
+
+    // CppLearn::STL::Container::Map::Test_Create();
+
+    // CppLearn::STL::Container::Map::Test_Assignment();
+
+    // CppLearn::STL::Container::Map::Test_Count();
 
     return 0;
 }

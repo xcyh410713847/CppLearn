@@ -17,6 +17,8 @@ add_subdirectory(Class)
 
 add_subdirectory(Library)
 
+add_subdirectory(Macro)
+
 add_subdirectory(MoveAssignmentOperator)
 
 add_subdirectory(Pointer)
