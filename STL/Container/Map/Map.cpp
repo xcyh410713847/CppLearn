@@ -92,6 +92,24 @@ namespace CppLearn::STL::Container::Map
         map[1] = "1";
         std::cout << "map[1]: " << map.at(1) << std::endl;
         std::cout << std::endl;
+
+        // 使用 emplace_hint() 方法插入元素 C++11
+        auto it = map.emplace_hint(map.begin(), 12, "twelve");
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << "map.begin()->first: " << map.begin()->first << ", second: " << map.begin()->second << std::endl;
+        std::cout << "it->first: " << it->first << ", second: " << it->second << std::endl;
+        std::cout << std::endl;
+
+        // 使用 try_emplace() 方法插入元素 C++17
+        map.try_emplace(13, "thirteen");
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 try_emplace() 方法插入元素 C++17
+        map.try_emplace(13, "13");
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << "map[13]: " << map.at(13) << std::endl;
+        std::cout << std::endl;
     }
 
     /**
@@ -141,6 +159,21 @@ namespace CppLearn::STL::Container::Map
         std::cout << "map.equal_range(2): " << range.first->second << ", " << range.second->second << std::endl;
         range = map.equal_range(3);
         std::cout << "map.equal_range(3): " << range.first->second << ", " << range.second->second << std::endl;
+        std::cout << std::endl;
+
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 extract 方法 C++17
+        std::map<int, int>::node_type node = map.extract(2);
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << "node.key(): " << node.key() << ", value: " << node.mapped() << std::endl;
+        std::cout << std::endl;
+
+        // 使用 extract 方法 C++17
+        std::map<int, int>::node_type node2 = map.extract(map.find(3));
+        std::cout << "map.size(): " << map.size() << std::endl;
+        std::cout << "node2.key(): " << node2.key() << ", value: " << node2.mapped() << std::endl;
         std::cout << std::endl;
     }
 
@@ -266,6 +299,24 @@ namespace CppLearn::STL::Container::Map
         std::cout << "map1 size: " << map1.size() << std::endl;
         std::cout << "map2 size: " << map2.size() << std::endl;
         std::cout << std::endl;
+
+        // 合并 merge C++17
+        std::map<int, std::string> map6 = {{3, "three3"}, {4, "four"}, {5, "five"}};
+        map5.merge(map6);
+        std::cout << "map5 size: " << map5.size() << std::endl;
+        std::cout << "map5[3]: " << map5.at(3) << std::endl;
+        std::cout << "map6 size: " << map6.size() << std::endl;
+        std::cout << "map6[3]: " << map6.at(3) << std::endl;
+        std::cout << std::endl;
+
+        // 合并 merge C++17
+        std::map<int, std::string> map7 = {{5, "five7"}, {6, "six"}, {7, "seven"}};
+        map5.merge(std::move(map7));
+        std::cout << "map5 size: " << map5.size() << std::endl;
+        std::cout << "map5[5]: " << map5.at(5) << std::endl;
+        std::cout << "map7 size: " << map7.size() << std::endl;
+        std::cout << "map7[5]: " << map7.at(5) << std::endl;
+        std::cout << std::endl;
     }
 
     /**
@@ -307,11 +358,32 @@ namespace CppLearn::STL::Container::Map
         std::cout << "map.count(4): " << map.count(4) << std::endl;
         std::cout << std::endl;
     }
+
+    /**
+     * 比较器
+     */
+    void Test_Compare()
+    {
+        std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
+
+        // key_comp 比较器 key_comp() 返回一个用于比较键的函数对象
+        // 该函数对象接受两个键值作为参数，并返回一个 bool 值，默认 std::less
+        std::map<int, std::string>::key_compare key_comp = map.key_comp();
+        std::cout << "key_comp(1, 2): " << key_comp(1, 2) << std::endl;
+        std::cout << "key_comp(2, 1): " << key_comp(2, 1) << std::endl;
+        std::cout << std::endl;
+
+        // value_comp 比较器 value_comp() 返回一个用于比较值的函数对象
+        std::map<int, std::string>::value_compare value_comp = map.value_comp();
+        std::cout << "value_comp(1, 2): " << value_comp({1, "one"}, {2, "two"}) << std::endl;
+        std::cout << "value_comp(2, 1): " << value_comp({2, "two"}, {1, "one"}) << std::endl;
+        std::cout << std::endl;
+    }
 }
 
 int main()
 {
-    CppLearn::STL::Container::Map::Test_Insertion();
+    // CppLearn::STL::Container::Map::Test_Insertion();
 
     // CppLearn::STL::Container::Map::Test_Lookup();
 
@@ -321,11 +393,13 @@ int main()
 
     // CppLearn::STL::Container::Map::Test_Size();
 
-    // CppLearn::STL::Container::Map::Test_Create();
+    CppLearn::STL::Container::Map::Test_Create();
 
     // CppLearn::STL::Container::Map::Test_Assignment();
 
     // CppLearn::STL::Container::Map::Test_Count();
+
+    // CppLearn::STL::Container::Map::Test_Compare();
 
     return 0;
 }
