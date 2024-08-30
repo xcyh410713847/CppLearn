@@ -28,3 +28,5 @@ add_subdirectory(Socket)
 add_subdirectory(STL)
 
 add_subdirectory(Template)
+
+add_subdirectory(Time)
