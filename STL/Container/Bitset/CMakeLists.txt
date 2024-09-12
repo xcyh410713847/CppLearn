@@ -1,2 +1,2 @@
-add_executable(Bitset
-    Bitset.cpp)
+add_executable(bitset
+    bitset.cpp)
