@@ -1,2 +1,2 @@
-add_executable(Priority_Queue
-    Priority_Queue.cpp)
+add_executable(STL_Container_priority_queue
+    priority_queue.cpp)

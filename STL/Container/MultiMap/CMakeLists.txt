@@ -1,2 +1,2 @@
-add_executable(MultiMap
-    MultiMap.cpp)
+add_executable(STL_Container_multimap
+    multimap.cpp)

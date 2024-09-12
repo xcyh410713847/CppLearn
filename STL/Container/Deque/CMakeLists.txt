@@ -1,2 +1,2 @@
-add_executable(Deque
-    Deque.cpp)
+add_executable(STL_Container_deque
+    deque.cpp)

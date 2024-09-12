@@ -1,2 +1,2 @@
-add_executable(any
+add_executable(STL_Container_any
     any.cpp)

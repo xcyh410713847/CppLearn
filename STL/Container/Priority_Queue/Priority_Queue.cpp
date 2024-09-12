@@ -1,8 +1,8 @@
 /*************************************************************************
-**文件: STL\Container\Priority_Queue\Priority_Queue.cpp
+**文件: STL\Container\priority_queue\priority_queue.cpp
 **作者: shyfan
 **日期: 2024/09/12 17:50:48
-**功能: Priority_Queue
+**功能: priority_queue
 *************************************************************************/
 
 int main()

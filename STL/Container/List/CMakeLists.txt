@@ -1,2 +1,2 @@
-add_executable(List
-    List.cpp)
+add_executable(STL_Container_list
+    list.cpp)

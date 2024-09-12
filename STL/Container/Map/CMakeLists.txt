@@ -1,2 +1,2 @@
-add_executable(Map
-    Map.cpp)
+add_executable(STL_Container_map
+    map.cpp)

@@ -1,2 +1,2 @@
-add_executable(Queue
-    Queue.cpp)
+add_executable(STL_Container_queue
+    queue.cpp)

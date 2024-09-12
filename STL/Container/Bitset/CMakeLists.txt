@@ -1,2 +1,2 @@
-add_executable(bitset
+add_executable(STL_Container_bitset
     bitset.cpp)

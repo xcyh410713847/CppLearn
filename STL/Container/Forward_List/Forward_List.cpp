@@ -1,8 +1,8 @@
 ﻿/*************************************************************************
-**文件: STL\Container\Forward_List\Forward_List.cpp
+**文件: STL\Container\forward_list\forward_list.cpp
 **作者: shyfan
 **日期: 2024/09/12 17:43:45
-**功能: Forward_List
+**功能: forward_list
 *************************************************************************/
 
 int main()

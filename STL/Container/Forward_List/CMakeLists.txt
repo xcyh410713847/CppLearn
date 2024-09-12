@@ -1,2 +1,2 @@
-add_executable(Forward_List
-    Forward_List.cpp)
+add_executable(STL_Container_forward_list
+    forward_list.cpp)
