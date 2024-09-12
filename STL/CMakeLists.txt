@@ -9,3 +9,6 @@ add_subdirectory(Iterator)
 
 # 函数对象
 add_subdirectory(Functors)
+
+# 组合器
+add_subdirectory(Combinators)
