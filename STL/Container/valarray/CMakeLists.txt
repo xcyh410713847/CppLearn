@@ -1,2 +1,2 @@
-add_executable(valarray
+add_executable(STL_Container_valarray
     valarray.cpp)

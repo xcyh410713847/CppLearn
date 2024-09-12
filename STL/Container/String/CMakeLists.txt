@@ -1,2 +1,2 @@
-add_executable(String
-    String.cpp)
+add_executable(STL_Container_string
+    string.cpp)

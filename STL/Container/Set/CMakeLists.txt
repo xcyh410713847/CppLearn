@@ -1,3 +1,3 @@
 # 增加一个可执行的二进制
-add_executable(Set
-    Set.cpp)
+add_executable(STL_Container_set
+    set.cpp)

@@ -34,8 +34,32 @@ add_subdirectory(priority_queue)
 # queue
 add_subdirectory(queue)
 
-# Set
-add_subdirectory(Set)
+# set
+add_subdirectory(set)
 
-# Vector
-add_subdirectory(Vector)
+# span
+add_subdirectory(span)
+
+# stack
+add_subdirectory(stack)
+
+# string
+add_subdirectory(string)
+
+# unordered_map
+add_subdirectory(unordered_map)
+
+# unordered_multimap
+add_subdirectory(unordered_multimap)
+
+# unordered_multiset
+add_subdirectory(unordered_multiset)
+
+# valarray
+add_subdirectory(valarray)
+
+# variant
+add_subdirectory(variant)
+
+# vector
+add_subdirectory(vector)
