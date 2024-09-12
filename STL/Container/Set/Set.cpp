@@ -1,15 +1,29 @@
 /*************************************************************************
-**文件: Set.cpp
+**文件: STL\Container\Set\Set.cpp
 **作者: shyfan
-**日期: 2023/07/14 10:03:21
-**功能: 集合
+**日期: 2024/08/12 15:32:31
+**功能: Set
 *************************************************************************/
 
 #include <iostream>
-
 #include <set>
 
-int main()
+namespace CppLearn::STL::Container::Set
+{
+    /*
+        std::set 存储唯一且有序的元素，底层通常采用红黑树这种自平衡二叉查找树结构
+
+        操作	                时间复杂度      空间复杂度
+        插入(Insertion)	        O(log n)	    O(1)
+        查找(Lookup)	        O(log n)	    O(1)
+        删除(Erase)	            O(log n)	    O(1)
+        迭代(Iteration)         O(n)	        O(1)
+        大小(Size)	            O(1)	        O(1)
+    */
+}
+
+    int
+    main()
 {
     std::set<int> set1;
     for (int i = 0; i < 10; ++i)
