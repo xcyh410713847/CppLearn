@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
+add_subdirectory(Algorithm)
+
 add_subdirectory(Array)
 
 add_subdirectory(BinaryTree)
@@ -22,6 +24,8 @@ add_subdirectory(Macro)
 add_subdirectory(MoveAssignmentOperator)
 
 add_subdirectory(Pointer)
+
+add_subdirectory(RTTI)
 
 add_subdirectory(Socket)
 
