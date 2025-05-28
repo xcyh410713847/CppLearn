@@ -33,6 +33,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Insertion()
     {
+        std::cout << "Test_Insertion" << std::endl;
+
         std::map<int, std::string> map;
 
         std::cout << "map.size(): " << map.size() << std::endl;
@@ -121,6 +123,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Lookup()
     {
+        std::cout << "Test_Lookup" << std::endl;
+
         std::map<int, int> map = {{1, 1}, {2, 2}, {3, 3}};
 
         // 使用下标访问元素
@@ -186,6 +190,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Deletion()
     {
+        std::cout << "Test_Deletion" << std::endl;
+
         std::map<int, int> map = {{1, 1}, {2, 2}, {3, 3}};
 
         std::cout << "map.size(): " << map.size() << std::endl;
@@ -221,6 +227,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Iteration()
     {
+        std::cout << "Test_Iteration" << std::endl;
+
         std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
 
         // begin
@@ -247,6 +255,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Size()
     {
+        std::cout << "Test_Size" << std::endl;
+
         std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
 
         // empty
@@ -267,6 +277,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Create()
     {
+        std::cout << "Test_Create" << std::endl;
+
         // 创建一个空 map
         std::map<int, std::string> map1;
         std::cout << "map1 size: " << map1.size() << std::endl;
@@ -324,6 +336,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Assignment()
     {
+        std::cout << "Test_Assignment" << std::endl;
+
         std::map<int, std::string> map1 = {{1, "one"}, {2, "two"}, {3, "three"}};
         std::map<int, std::string> map2;
 
@@ -351,6 +365,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Count()
     {
+        std::cout << "Test_Count" << std::endl;
+
         std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
 
         // count
@@ -364,6 +380,8 @@ namespace CppLearn::STL::Container::Map
      */
     void Test_Compare()
     {
+        std::cout << "Test_Compare" << std::endl;
+
         std::map<int, std::string> map = {{1, "one"}, {2, "two"}, {3, "three"}};
 
         // key_comp 比较器 key_comp() 返回一个用于比较键的函数对象
